@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h2>Here are some projects I have completed:</h2>
+    {% for proj in projects %}
+    <div><a href="{{ url_for(proj) }}">{{ proj }}</a></div>
+    {% endfor %}
+{% endblock %}

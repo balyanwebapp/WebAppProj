@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <h2>Click on the button below to get current data on closed end funds</h2>
+    <form action="{{ url_for('run_closed_end_script') }}" method="post" onsubmit="showLoading()">
+        <button type="submit">Closed End Fund Data</button>
+    </form>
+    <div id="loading">Loading, please wait...</div>
+{% endblock %}

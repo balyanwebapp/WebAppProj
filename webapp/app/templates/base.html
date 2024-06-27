@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Mackay Shields Projects</title>
+      {% else %}
+      <title>Mackay Shields Projects</title>
+      {% endif %}
+      <style>
+        #loading {
+            display: none;
+            font-size: 20px;
+            color: blue;
+        }
+    </style>
+    </head>
+    <body>
+        <div>
+            Directory:
+            <a href="{{ url_for('projects') }}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+        <script>
+            function showLoading() {
+                document.getElementById('loading').style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
